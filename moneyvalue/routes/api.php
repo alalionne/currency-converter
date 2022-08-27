@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post("register", [UserController::class,"register"]);
 Route::post("login", [UserController::class,"login"]);
 //Route::post("logout", [UserController::class,"logout"]);
+Route::get('test/{value}/{currency_from}/{currency_to}', [PairController::class,"convert"]);
 Route::apiResource('currencies', CurrencyController::class);
 Route::apiResource('pairs', PairController::class);
 Route::get("logout", [UserController::class,"logout"])->middleware('auth:sanctum');

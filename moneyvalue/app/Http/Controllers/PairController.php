@@ -129,4 +129,28 @@ class PairController extends Controller
             ]);
         }
     }
+
+    public function convert($value, $currency_from, $currency_to){
+       
+        $info = Pair::where('currency_id_from',$currency_from)->where('currency_id_to',$currency_to)->first();
+
+        if(!isset($info) || $info == Null){
+            return response()->json([
+                "status" => 0,
+                "message" => "pair introuvable"
+            ]);
+        }
+
+        $result = $value * $info->rate;
+        $info->exchange_number++;
+
+        $info->save();
+
+        return response()->json([
+                "status" => 1,
+                "message" => "réussie",
+                "resultat" => $result,
+                "data" => $info
+            ]);
+    }
 }

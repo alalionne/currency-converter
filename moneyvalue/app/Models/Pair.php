@@ -14,7 +14,8 @@ class Pair extends Model
     protected $fillable = [
 		'currency_id_from',
 		'currency_id_to',
-        'rate'
+        'rate',
+        'exchange_number',
 	];
 
     public function currencyFrom(){

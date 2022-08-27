@@ -20,6 +20,7 @@ return new class extends Migration
             $table->bigInteger('currency_id_to')->unsigned()->nullable();
             $table->foreign('currency_id_to')->references('id')->on('currencies');
             $table->string('rate');
+            $table->integer('exchange_number')->default(0);
             $table->timestamps();
         });
     }
